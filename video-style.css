@@ -1,0 +1,68 @@
+/* 容器全域設定 */
+.video-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 水平置中所有內容 */
+    padding: 60px 20px;
+    background-color: #ffffff; /* 可依喜好調整背景色 */
+}
+
+/* 每一節的樣式 */
+.video-section {
+    width: 100%;
+    max-width: 900px; /* 限制影片最大寬度，避免在大螢幕上過大 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 確保內部元件全部置中 */
+    margin-bottom: 80px; /* 場次之間的間距 */
+}
+
+/* 場次標題 */
+.session-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+/* 分隔線設計 */
+.divider {
+    width: 100%;
+    max-width: 600px; /* 線條不要太長，視覺較集中 */
+    height: 1px;
+    background: linear-gradient(to right, transparent, #465a83cc, transparent);
+    margin-bottom: 30px;
+}
+
+/* 影片響應式外殼 */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    height: 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 給影片一點陰影質感 */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 手機版微調 */
+@media (max-width: 768px) {
+    .session-title {
+        font-size: 1.5rem;
+    }
+    .video-section {
+        margin-bottom: 50px;
+    }
+    .divider {
+        max-width: 80%;
+    }
+}
