@@ -26,6 +26,12 @@
     text-indent: 0 !important; /* 防止縮排產生的視覺錯覺 */
 }
 
+/* 確保圖示標籤使用自己的字體，不被 Noto Serif 強制覆蓋 */
+.fas, .fab, .far, .fa-solid, .fa-brands {
+    font-family: "Font Awesome 6 Free" !important; 
+    font-weight: 900;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -126,6 +132,7 @@ h1, h2, h3, .hero-text h1, .navbar a {
     font-weight: 400; 
     letter-spacing: 2px; /* 增加字距讓標題更大氣 */
 }
+
 
 /* --- 下拉選單：同步主畫面邏輯 --- */
 .dropdown-menu {
@@ -474,13 +481,15 @@ embed {
         display: none; 
         flex-direction: column;
         position: absolute;
-        top: 60px; /* 對應導覽列高度 */
+        top: 60px; 
         left: 0;
         width: 100%;
         background: #ffffff;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         padding: 10px 0;
         gap: 0;
+        /* 確保容器內的項目水平置中 */
+        align-items: center;
     }
 
     .nav-links.show {
@@ -489,13 +498,15 @@ embed {
 
     .nav-links li {
         width: 100%;
+        display: block; /* 確保佔滿寬度以便文字置中 */
     }
 
     .nav-links a {
-        padding: 15px 25px;
+        padding: 15px 0; /* 上下保留間距，左右設為 0 */
         border-bottom: 1px solid #f0f0f0;
         font-size: 16px;
-        text-align: left; /* 改為靠左對齊較符合手機操作習慣 */
+        text-align: center; /* <<< 關鍵：文字置中 */
+        width: 100%;
     }
 
     /* 手機版下拉選單：點擊後展開 */
@@ -503,10 +514,9 @@ embed {
         position: static;
         transform: none;
         width: 100%;
-        box-shadow: none;
         background-color: #f9fafb;
+        display: none; 
         padding: 0;
-        display: none; /* 預設隱藏，由 JS 或 Hover 控制 */
     }
 
     .dropdown:hover .dropdown-menu {
@@ -514,7 +524,8 @@ embed {
     }
 
     .dropdown-menu li a {
-        padding-left: 40px; /* 增加縮排，顯示層級感 */
+        padding-left: 0; /* 移除原本的左側縮排 */
+        text-align: center; /* <<< 下拉選單文字也置中 */
         font-size: 14px;
         background: transparent;
     }

@@ -16,6 +16,14 @@ html, body {
     background-color: #ffffff;
 }
 
+
+/* 確保圖示標籤使用自己的字體，不被 Noto Serif 強制覆蓋 */
+.fas, .fab, .far, .fa-solid, .fa-brands {
+    font-family: "Font Awesome 6 Free" !important; 
+    font-weight: 900;
+}
+
+
 body {
     padding-top: 70px;
 }
