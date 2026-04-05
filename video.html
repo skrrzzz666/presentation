@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成果發表影片</title>
+    <link rel="icon" href="home.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Logo" style="height: 65px;">
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li class="dropdown">
+                <a href="javascript:void(0);">成員</a>
+                <ul class="dropdown-menu">
+                    <li><a href="member.html">學生</a></li>
+                    <li><a href="teacher.html">老師</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="video.html">影片</a>
+            </li>
+            <li class="dropdown">
+                <a href="presentation.html">小成發</a>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0);">生物</a>
+                <ul class="dropdown-menu">
+                    <li><a href="metal.html">重金屬污染土壤修復</a></li>
+                    <li><a href="ants.html">甜味劑對高雄巨山蟻的防治與影響</a></li>
+                    <li><a href="wheetgrass.html">水楊酸對小麥草的抗逆境之影響</a></li>
+                    <li><a href="waterflea.html">影響水蚤心跳因素之探討</a></li>
+                    <li><a href="amf.html">拒絕「鹽」上 ：叢枝菌根菌</a></li>
+                    <li><a href="fishwort.html">「魚腥」未盡—探討魚腥草之多種功效</a></li>
+                    <li><a href="switch.html">葉片的微小開關</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0);">物理</a>
+                <ul class="dropdown-menu">
+                    <li><a href="water.html">倒水液體對聲音的影響</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0);">資訊</a>
+                <ul class="dropdown-menu">
+                    <li><a href="smartphonebox.html">「機」不可失：遠端智控盒</a></li>
+                    <li><a href="gameweb.html">具遊戲性質之旅遊網頁</a></li>
+                    <li><a href="mixedtext.html">混合文本檢測性能研究</a></li>
+                    <li><a href="fence.html">「圍」你守候,不「離」不棄</a></li>
+                    <li><a href="car.html">麥向全方自走車</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0);">社會科學</a>
+                <ul class="dropdown-menu">
+                    <li><a href="public.html">處心“基”慮；接受度的關鍵因素</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0);">化學</a>
+                <ul class="dropdown-menu">
+                    <li><a href="ao7.html">膠點橙清，降解AO7</a></li>
+                    <li><a href="solar.html">幫染敏太陽能板穿上防曬衣</a></li>
+                    <li><a href="plastic.html">改質殼粉強化天然塑膠</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0);">生活科技</a>
+                <ul class="dropdown-menu">
+                    <li><a href="energy.html">「踩」集能源垃圾桶</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="content">
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-title">2026 精誠中學第三屆雙語教育實驗班專題成果發表會</h2>
+                <p>總召：柯曉柔、陳旭昇<br>
+                    公關：傅家昀<br>
+                    網頁管理：王子丰、許宸愷、吳汯祐<br>
+                    地址：彰化縣彰化市林森路200號</p>
+                <p class="copyright">Copyright © 2026 CCHS. All rights reserved.</p>
+            </div>
+
+            <div class="footer-right">
+                <a href="https://www.instagram.com/cchs_510?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+
+
+</body>
+</html>
