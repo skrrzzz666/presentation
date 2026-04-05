@@ -27,6 +27,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover; /* 自動裁切填滿，不變形 */
+    display: block;
     transition: transform 0.5s ease;
 }
 
