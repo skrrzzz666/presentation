@@ -1,0 +1,134 @@
+/* --- 基礎設定 --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- 全域設定：預設內文使用思源黑體 --- */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 優先載入思源黑體，若失敗則使用系統預設黑體 */
+    font-family: 'Noto Serif TC', serif !important;
+    font-weight: 400; /* 標準粗度 */
+    background-color: #f4f4f9;
+}
+
+/* --- 標題設定：強烈視覺感的思源宋體 Bold --- */
+h1, h2, h3, .hero-text h1, .navbar a {
+    /* 標題改用思源宋體，增加人文質感與學術專業感 */
+    font-family: 'Noto Serif TC', serif !important;
+    font-weight: 900; /* Bold 粗體 */
+}
+
+
+/* --- 導覽列 Navbar (主畫面) --- */
+.navbar {
+    position: fixed; /* 固定在最上方 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 9999;
+    display: flex;
+    justify-content: center; /* 讓中間的標籤選單置中 */
+    align-items: center;
+    padding: 0 50px;
+}
+
+.logo {
+    position: absolute; /* 絕對定位 */
+    left: 20px;         /* 固定在左邊 20px 的位置 */
+    top: 50%;           /* 垂直置中輔助 */
+    transform: translateY(-50%);
+}
+
+.logo img {
+    display: block;
+    height: 20px;      /* 你可以根據 Logo 大小調整 */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links li { position: relative; }
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
+}
+
+/* --- 下拉選單 --- */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    width: max-content;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    list-style: none;
+    padding: 10px 0;
+}
+
+.dropdown:hover .dropdown-menu { display: block; }
+
+.dropdown-menu li a {
+    padding: 10px 20px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.dropdown-menu li a:hover { background-color: #f0f7ff; color: #007bff; }
+
+/* --- 首頁背景圖 (Hero Section) --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 65vh; 
+    /* 增加 padding-top，數值要大於 navbar 的高度 (70px) */
+    padding-top: 80px; 
+    
+    /* 背景設定維持原樣，但確保它是從 padding 區域開始顯示 */
+    background: #465a83 url('first.png') no-repeat right center / contain; 
+    background-origin: content-box; /* 關鍵：讓背景圖從 padding 內層開始算起 */
+    
+    display: flex;
+    align-items: center;
+    padding-left: 8%;
+}
+
+.hero-text {
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3); /* 讓文字更有層次感 */
+}
+
+/* 如果你特別想要 Hero Section 的文字更粗一點 */
+.hero-text h1 {
+    font-weight: 900; 
+    letter-spacing: 2px; /* 增加字距讓標題更大氣 */
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
