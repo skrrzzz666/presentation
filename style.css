@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Microsoft JhengHei", sans-serif;
+    font-family: 'Noto Serif TC', serif !important;
 }
 
 html {
@@ -131,4 +131,71 @@ h1, h2, h3, .hero-text h1, .navbar a {
 .hero-text p {
     font-size: 1.2rem;
     font-weight: 300;
+}
+
+/* --- 頁腳 Footer 還原截圖樣式 --- */
+.footer {
+    background-color: #000000; /* 純黑背景 */
+    color: #ffffff;
+    padding: 40px 10%; /* 左右留白 */
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* 左右撐開 */
+    align-items: flex-start;
+}
+
+.footer-left {
+    text-align: left;
+    line-height: 1.8;
+}
+
+.footer-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.footer-left p {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.footer-left .copyright {
+    margin-top: 5px;
+    font-size: 0.85rem;
+}
+
+/* 修改原本 footer-right 的樣式 */
+.footer-right {
+    display: flex;
+    gap: 25px; /* 圖示間距 */
+    padding-top: 10px;
+}
+
+.footer-right a {
+    color: #ffffff; /* 設定圖標為白色 */
+    font-size: 24px; /* 設定圖標大小 */
+    text-decoration: none;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.footer-right a:hover {
+    opacity: 0.7;
+    transform: translateY(-3px); /* 滑鼠移上去稍微往上飄，增加互動感 */
+}
+
+/* 手機版自動堆疊 */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .footer-right {
+        justify-content: flex-start;
+    }
 }
