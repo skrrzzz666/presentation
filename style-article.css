@@ -363,18 +363,26 @@ embed {
     font-size: 0.85rem;
 }
 
-/* 修改原本 footer-right 的樣式 */
+/* --- 確保電腦版 IG 圖示正常顯示 --- */
 .footer-right {
-    display: flex;
-    gap: 25px; /* 圖示間距 */
+    display: flex !important; /* 確保不被隱藏 */
+    gap: 25px;
     padding-top: 10px;
 }
 
 .footer-right a {
-    color: #ffffff; /* 設定圖標為白色 */
-    font-size: 24px; /* 設定圖標大小 */
+    color: #ffffff !important; /* 確保是白色 */
+    font-size: 24px;
     text-decoration: none;
-    transition: opacity 0.3s, transform 0.3s;
+    display: inline-block;
+    line-height: 1; /* 確保高度正確 */
+}
+
+/* 強制讓圖示使用 Font Awesome 的字體，不要被思源宋體蓋掉 */
+.footer-right i {
+    font-family: "Font Awesome 6 Brands" !important; 
+    font-weight: 400;
+    font-style: normal;
 }
 
 .footer-right a:hover {
@@ -390,5 +398,101 @@ embed {
     }
     .footer-right {
         justify-content: flex-start;
+    }
+}
+/* =========================================
+   手機版 (RWD) 自動適應優化 
+   適用於所有專題文章分頁
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. 導覽列 Navbar 縮小與避讓 */
+    .navbar {
+        padding: 0 15px;
+        height: 60px;
+        justify-content: flex-end; /* 避免按鈕撞到 Logo */
+    }
+
+    .logo img {
+        height: 45px !important; /* 縮小 Logo */
+    }
+
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-links a {
+        font-size: 13px; /* 縮小文字避免橫向撐破 */
+    }
+
+    /* 2. 文章頂部 Hero 區塊縮小 */
+    .article-hero {
+        height: auto;
+        min-height: 250px;
+        padding: 80px 20px 40px 20px; /* 留出 navbar 的空間 */
+    }
+
+    .main-title {
+        font-size: 1.6rem !important; /* 標題縮小避免折行太亂 */
+        line-height: 1.4;
+        word-break: break-all;
+    }
+
+    .info-box {
+        font-size: 0.85rem;
+        margin-top: 15px;
+    }
+
+    /* 3. 內文容器調整 */
+    .article-body {
+        padding: 20px 15px; /* 減少邊距，增加閱讀空間 */
+    }
+
+    .abstract-section, .poster-section, .pdf-section {
+        width: 100% !important;
+        margin-bottom: 25px;
+    }
+
+    /* 4. PDF 與海報預覽框優化 */
+    /* 手機上 embed 通常無法捲動 PDF，高度縮短並強調下載連結 */
+    .poster-embed, 
+    .pdf-section embed {
+        height: 350px !important; 
+        border: 1px solid #ddd;
+    }
+
+    .poster-hint, .download-link {
+        font-size: 0.9rem;
+        background-color: #f0f7ff;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    /* 5. 頁腳 Footer 堆疊 (參考自 member-style) */
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-left {
+        text-align: center;
+    }
+
+    .footer-right {
+        justify-content: center;
+        padding-top: 0;
+    }
+}
+
+/* 針對極小螢幕 (如 iPhone SE) 的額外微調 */
+@media (max-width: 375px) {
+    .main-title {
+        font-size: 1.4rem !important;
+    }
+    .nav-links a {
+        font-size: 12px;
     }
 }

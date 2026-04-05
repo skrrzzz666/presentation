@@ -170,18 +170,26 @@ h1, h2, h3, .hero-text h1, .navbar a {
     font-size: 0.85rem;
 }
 
-/* 修改原本 footer-right 的樣式 */
+/* --- 確保電腦版 IG 圖示正常顯示 --- */
 .footer-right {
-    display: flex;
-    gap: 25px; /* 圖示間距 */
+    display: flex !important; /* 確保不被隱藏 */
+    gap: 25px;
     padding-top: 10px;
 }
 
 .footer-right a {
-    color: #ffffff; /* 設定圖標為白色 */
-    font-size: 24px; /* 設定圖標大小 */
+    color: #ffffff !important; /* 確保是白色 */
+    font-size: 24px;
     text-decoration: none;
-    transition: opacity 0.3s, transform 0.3s;
+    display: inline-block;
+    line-height: 1; /* 確保高度正確 */
+}
+
+/* 強制讓圖示使用 Font Awesome 的字體，不要被思源宋體蓋掉 */
+.footer-right i {
+    font-family: "Font Awesome 6 Brands" !important; 
+    font-weight: 400;
+    font-style: normal;
 }
 
 .footer-right a:hover {
@@ -197,5 +205,53 @@ h1, h2, h3, .hero-text h1, .navbar a {
     }
     .footer-right {
         justify-content: flex-start;
+    }
+}
+
+/* 在 style.css 末尾添加或修改媒體查詢 */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 15px;
+        height: 60px;
+        justify-content: flex-end; /* 讓內容靠右，避免撞到左邊 Logo */
+    }
+
+    .logo img {
+        height: 45px !important; /* 手機版 Logo 縮小一點 */
+    }
+
+    .nav-links {
+        gap: 10px; /* 縮小選項間距 */
+    }
+
+    .nav-links a {
+        font-size: 14px; /* 字體調小 */
+    }
+
+    /* 針對下拉選單在手機上的優化 */
+    .dropdown-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        transform: none;
+        width: 100vw; /* 展開時佔滿寬度，比較好點擊 */
+        text-align: center;
+        box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+    }
+
+    .hero-section {
+        height: 50vh; /* 手機版高度稍微降低 */
+        padding-top: 60px;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 0;
+        text-align: center;
+        /* 改為 cover 讓圖片填滿，或是用置中對齊 */
+        background: #465a83 url('first.png') no-repeat center center / cover;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem; /* 縮小手機版標題字體 */
+        margin: 0 20px;
     }
 }

@@ -190,18 +190,26 @@ body {
     font-size: 0.85rem;
 }
 
-/* 修改原本 footer-right 的樣式 */
+/* --- 確保電腦版 IG 圖示正常顯示 --- */
 .footer-right {
-    display: flex;
-    gap: 25px; /* 圖示間距 */
+    display: flex !important; /* 確保不被隱藏 */
+    gap: 25px;
     padding-top: 10px;
 }
 
 .footer-right a {
-    color: #ffffff; /* 設定圖標為白色 */
-    font-size: 24px; /* 設定圖標大小 */
+    color: #ffffff !important; /* 確保是白色 */
+    font-size: 24px;
     text-decoration: none;
-    transition: opacity 0.3s, transform 0.3s;
+    display: inline-block;
+    line-height: 1; /* 確保高度正確 */
+}
+
+/* 強制讓圖示使用 Font Awesome 的字體，不要被思源宋體蓋掉 */
+.footer-right i {
+    font-family: "Font Awesome 6 Brands" !important; 
+    font-weight: 400;
+    font-style: normal;
 }
 
 .footer-right a:hover {
@@ -217,5 +225,62 @@ body {
     }
     .footer-right {
         justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 導覽列優化 */
+    .navbar {
+        height: 60px;
+        padding: 0 15px;
+        justify-content: flex-end;
+    }
+    .logo img { height: 45px !important; }
+    .nav-links { gap: 8px; }
+    .nav-links a { font-size: 13px; }
+
+    /* 頂部標題縮小 */
+    .page-header {
+        height: 250px;
+        margin-bottom: 40px;
+    }
+    .page-header h1 {
+        font-size: 2rem;
+        letter-spacing: 5px;
+    }
+
+    /* 成員區塊改為垂直排列 */
+    .member-section, 
+    .member-section:nth-child(even) {
+        flex-direction: column !important;
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .member-text-wrapper {
+        text-align: center; /* 手機版文字置中較好看 */
+    }
+
+    .group-title {
+        font-size: 2rem;
+    }
+
+    .group-list h3 {
+        font-size: 1.1rem;
+    }
+
+    /* 圖片寬度調整 */
+    .member-photo {
+        max-width: 90%;
+    }
+
+    /* Footer 堆疊 */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .footer-right {
+        justify-content: center;
     }
 }
