@@ -4,15 +4,34 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Noto Serif TC', serif !important;
+    list-style: none !important; /* 新增這一行，確保所有清單符號消失 */
+}
+
+/* 強制移除所有可能的偽元素內容 */
+.nav-links li::before, 
+.nav-links a::before,
+.nav-links li::after,
+.nav-links a::after,
+.dropdown::before,
+.dropdown::after,
+.dropdown > a::before,
+.dropdown > a::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* 針對「成員」這個項目特別加強 */
+.nav-links .dropdown > a {
+    list-style: none !important;
+    text-indent: 0 !important; /* 防止縮排產生的視覺錯覺 */
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* --- 導覽列 Navbar (固定置頂且與主畫面完全一致) --- */
 .navbar {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -38,21 +57,50 @@ html {
     height: 65px;      
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+}
+
 .nav-links {
-    list-style: none;
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
     display: flex;
     gap: 30px;
 }
 
-.nav-links li { position: relative; }
+.nav-links li {
+    display: flex;
+    align-items: center;
+    position: relative;
+    list-style: none !important;
+    list-style-type: none !important;
+    list-style-image: none !important;
+    padding-left: 0 !important;
+}
+
+/* 強制移除所有導覽項目前方的 marker（避免出現方框） */
+.nav-links li::marker,
+.dropdown-menu li::marker {
+    content: "" !important;
+    font-size: 0 !important;
+}
+
 
 .nav-links a {
+    display: inline-block;
     text-decoration: none;
     color: #333;
     font-weight: bold;
     font-size: 16px;
     display: block;
     padding: 10px 0;
+    list-style-type: none !important;
 }
 
 /* --- 全域設定：預設內文使用思源黑體 --- */
@@ -400,81 +448,145 @@ embed {
         justify-content: flex-start;
     }
 }
-/* =========================================
-   手機版 (RWD) 自動適應優化 
-   適用於所有專題文章分頁
-   ========================================= */
 
+/* --- 保留你原本的設定，並在末尾 RWD 區塊進行修正 --- */
+
+/* --- 手機版專屬改良 (RWD) --- */
 @media (max-width: 768px) {
-    /* 1. 導覽列 Navbar 縮小與避讓 */
+    /* 1. 導覽列與選單優化 */
     .navbar {
         padding: 0 15px;
-        height: 60px;
-        justify-content: flex-end; /* 避免按鈕撞到 Logo */
+        height: 60px; /* 手機版高度稍微縮小 */
     }
 
     .logo img {
-        height: 45px !important; /* 縮小 Logo */
+        height: 45px; /* Logo 縮小避免太擠 */
+    }
+
+    .menu-toggle {
+        display: block !important;
+        position: absolute;
+        right: 20px;
+        font-size: 22px;
     }
 
     .nav-links {
-        gap: 8px;
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* 對應導覽列高度 */
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 10px 0;
+        gap: 0;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
     }
 
     .nav-links a {
-        font-size: 13px; /* 縮小文字避免橫向撐破 */
+        padding: 15px 25px;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 16px;
+        text-align: left; /* 改為靠左對齊較符合手機操作習慣 */
     }
 
-    /* 2. 文章頂部 Hero 區塊縮小 */
+    /* 手機版下拉選單：點擊後展開 */
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        width: 100%;
+        box-shadow: none;
+        background-color: #f9fafb;
+        padding: 0;
+        display: none; /* 預設隱藏，由 JS 或 Hover 控制 */
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu li a {
+        padding-left: 40px; /* 增加縮排，顯示層級感 */
+        font-size: 14px;
+        background: transparent;
+    }
+
+    /* 2. Hero 區塊優化 (防止文字溢出與重疊) */
     .article-hero {
         height: auto;
-        min-height: 250px;
-        padding: 80px 20px 40px 20px; /* 留出 navbar 的空間 */
+        min-height: 350px;
+        padding: 40px 20px;
+        display: block; /* 改為區塊排版 */
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        margin-top: 40px;
     }
 
     .main-title {
-        font-size: 1.6rem !important; /* 標題縮小避免折行太亂 */
-        line-height: 1.4;
-        word-break: break-all;
+        font-size: 1.8rem !important; /* 縮小主標題 */
+        line-height: 1.3;
+        margin-bottom: 30px;
+        text-align: center;
     }
 
     .info-box {
-        font-size: 0.85rem;
-        margin-top: 15px;
+        position: static; /* 取消絕對定位 */
+        margin: 0 auto;
+        width: 90%;
+        max-width: 300px;
+        background: rgba(255, 255, 255, 0.1); /* 增加淡淡背襯提升閱讀性 */
+        padding: 15px;
+        border-left: 3px solid #ffffff;
+        text-align: left;
     }
 
-    /* 3. 內文容器調整 */
-    .article-body {
-        padding: 20px 15px; /* 減少邊距，增加閱讀空間 */
+    .info-box p {
+        font-size: 0.95rem;
     }
 
+    /* 3. 內容區塊調整 */
     .abstract-section, .poster-section, .pdf-section {
-        width: 100% !important;
-        margin-bottom: 25px;
+        padding: 40px 15px;
     }
 
-    /* 4. PDF 與海報預覽框優化 */
-    /* 手機上 embed 通常無法捲動 PDF，高度縮短並強調下載連結 */
-    .poster-embed, 
-    .pdf-section embed {
-        height: 350px !important; 
-        border: 1px solid #ddd;
+    .abstract-section h3, .poster-container h3, .pdf-container h3 {
+        font-size: 1.5rem;
     }
 
-    .poster-hint, .download-link {
-        font-size: 0.9rem;
-        background-color: #f0f7ff;
-        padding: 10px;
-        border-radius: 5px;
-        margin-top: 10px;
-        text-align: center;
+    .abstract-section p {
+        font-size: 1rem;
+        line-height: 1.6;
     }
 
-    /* 5. 頁腳 Footer 堆疊 (參考自 member-style) */
+    /* PDF 檢視器高度調整 */
+    embed {
+        height: 500px; 
+    }
+
+    /* 4. Footer 調整 */
+    .footer {
+        padding: 30px 20px;
+    }
+
     .footer-container {
         flex-direction: column;
-        gap: 20px;
+        align-items: center;
         text-align: center;
+        gap: 25px;
     }
 
     .footer-left {
@@ -487,12 +599,3 @@ embed {
     }
 }
 
-/* 針對極小螢幕 (如 iPhone SE) 的額外微調 */
-@media (max-width: 375px) {
-    .main-title {
-        font-size: 1.4rem !important;
-    }
-    .nav-links a {
-        font-size: 12px;
-    }
-}

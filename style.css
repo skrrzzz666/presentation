@@ -10,28 +10,25 @@ html {
     scroll-behavior: smooth;
 }
 
-/* --- 全域設定：預設內文使用思源黑體 --- */
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* 優先載入思源黑體，若失敗則使用系統預設黑體 */
     font-family: 'Noto Serif TC', serif !important;
-    font-weight: 400; /* 標準粗度 */
+    font-weight: 400;
     background-color: #f4f4f9;
+    overflow-x: hidden; /* 防止手機版左右晃動 */
 }
 
-/* --- 標題設定：強烈視覺感的思源宋體 Bold --- */
+/* --- 標題與文字設定 --- */
 h1, h2, h3, .hero-text h1, .navbar a {
-    /* 標題改用思源宋體，增加人文質感與學術專業感 */
     font-family: 'Noto Serif TC', serif !important;
-    font-weight: 900; /* Bold 粗體 */
+    font-weight: 900;
 }
 
-
-/* --- 導覽列 Navbar (主畫面) --- */
+/* --- 導覽列 Navbar --- */
 .navbar {
-    position: fixed; /* 固定在最上方 */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -40,21 +37,31 @@ h1, h2, h3, .hero-text h1, .navbar a {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     z-index: 9999;
     display: flex;
-    justify-content: center; /* 讓中間的標籤選單置中 */
+    justify-content: center; 
     align-items: center;
     padding: 0 50px;
 }
 
 .logo {
-    position: absolute; /* 絕對定位 */
-    left: 20px;         /* 固定在左邊 20px 的位置 */
-    top: 50%;           /* 垂直置中輔助 */
+    position: absolute;
+    left: 20px;
+    top: 50%;
     transform: translateY(-50%);
 }
 
 .logo img {
     display: block;
-    height: 20px;      /* 你可以根據 Logo 大小調整 */
+    height: 65px; /* 根據你的 HTML 設定維持 65px */
+    transition: height 0.3s ease;
+}
+
+/* 漢堡選單按鈕 (預設電腦版隱藏) */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
 }
 
 .nav-links {
@@ -72,9 +79,12 @@ h1, h2, h3, .hero-text h1, .navbar a {
     font-size: 16px;
     display: block;
     padding: 10px 0;
+    transition: color 0.3s;
 }
 
-/* --- 下拉選單 --- */
+.nav-links a:hover { color: #007bff; }
+
+/* --- 下拉選單 (電腦版) --- */
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -105,13 +115,8 @@ h1, h2, h3, .hero-text h1, .navbar a {
     position: relative;
     width: 100%;
     height: 65vh; 
-    /* 增加 padding-top，數值要大於 navbar 的高度 (70px) */
-    padding-top: 80px; 
-    
-    /* 背景設定維持原樣，但確保它是從 padding 區域開始顯示 */
+    padding-top: 70px; /* 與 Navbar 高度相同 */
     background: #465a83 url('first.png') no-repeat right center / contain; 
-    background-origin: content-box; /* 關鍵：讓背景圖從 padding 內層開始算起 */
-    
     display: flex;
     align-items: center;
     padding-left: 8%;
@@ -119,25 +124,20 @@ h1, h2, h3, .hero-text h1, .navbar a {
 
 .hero-text {
     color: white;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.3); /* 讓文字更有層次感 */
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
 
-/* 如果你特別想要 Hero Section 的文字更粗一點 */
 .hero-text h1 {
+    font-size: 3rem;
     font-weight: 900; 
-    letter-spacing: 2px; /* 增加字距讓標題更大氣 */
+    letter-spacing: 2px;
 }
 
-.hero-text p {
-    font-size: 1.2rem;
-    font-weight: 300;
-}
-
-/* --- 頁腳 Footer 還原截圖樣式 --- */
+/* --- 頁腳 Footer --- */
 .footer {
-    background-color: #000000; /* 純黑背景 */
+    background-color: #000000;
     color: #ffffff;
-    padding: 40px 10%; /* 左右留白 */
+    padding: 40px 10%;
     font-family: "Microsoft JhengHei", sans-serif;
 }
 
@@ -145,7 +145,7 @@ h1, h2, h3, .hero-text h1, .navbar a {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* 左右撐開 */
+    justify-content: space-between;
     align-items: flex-start;
 }
 
@@ -165,93 +165,120 @@ h1, h2, h3, .hero-text h1, .navbar a {
     margin: 0;
 }
 
-.footer-left .copyright {
-    margin-top: 5px;
-    font-size: 0.85rem;
-}
-
-/* --- 確保電腦版 IG 圖示正常顯示 --- */
 .footer-right {
-    display: flex !important; /* 確保不被隱藏 */
+    display: flex;
     gap: 25px;
     padding-top: 10px;
 }
 
 .footer-right a {
-    color: #ffffff !important; /* 確保是白色 */
+    color: #ffffff !important;
     font-size: 24px;
     text-decoration: none;
-    display: inline-block;
-    line-height: 1; /* 確保高度正確 */
+    transition: 0.3s;
 }
 
-/* 強制讓圖示使用 Font Awesome 的字體，不要被思源宋體蓋掉 */
 .footer-right i {
     font-family: "Font Awesome 6 Brands" !important; 
-    font-weight: 400;
-    font-style: normal;
 }
 
 .footer-right a:hover {
     opacity: 0.7;
-    transform: translateY(-3px); /* 滑鼠移上去稍微往上飄，增加互動感 */
+    transform: translateY(-3px);
 }
 
-/* 手機版自動堆疊 */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        gap: 30px;
-    }
-    .footer-right {
-        justify-content: flex-start;
-    }
-}
-
-/* 在 style.css 末尾添加或修改媒體查詢 */
+/* ==========================================
+   手機版 RWD 優化 (螢幕小於 768px)
+   ========================================== */
 @media (max-width: 768px) {
     .navbar {
-        padding: 0 15px;
+        padding: 0 20px;
         height: 60px;
-        justify-content: flex-end; /* 讓內容靠右，避免撞到左邊 Logo */
+        justify-content: flex-end;
     }
 
     .logo img {
-        height: 45px !important; /* 手機版 Logo 縮小一點 */
+        height: 45px !important;
     }
 
+    /* 顯示漢堡選單圖示 */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* 將選單改為手機版垂直樣式 */
     .nav-links {
-        gap: 10px; /* 縮小選項間距 */
+        display: none; /* 預設隱藏，需透過 JS 切換 .active 類別 */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        padding: 20px 0;
+        gap: 0;
+    }
+
+    /* 當 JS 加入 .active 時顯示選單 */
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
     }
 
     .nav-links a {
-        font-size: 14px; /* 字體調小 */
+        padding: 15px;
+        border-bottom: 1px solid #f0f0f0;
     }
 
-    /* 針對下拉選單在手機上的優化 */
+    /* 手機版下拉選單優化：改為點擊展開（或滑過展開但寬度撐滿） */
     .dropdown-menu {
-        position: fixed;
-        top: 60px;
-        left: 0;
+        position: static;
         transform: none;
-        width: 100vw; /* 展開時佔滿寬度，比較好點擊 */
-        text-align: center;
-        box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+        width: 100%;
+        box-shadow: none;
+        background-color: #f9f9f9;
+        display: none; /* 手機版預設隱藏子選單 */
     }
 
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    /* Hero Section 手機版調整 */
     .hero-section {
-        height: 50vh; /* 手機版高度稍微降低 */
+        height: 50vh;
         padding-top: 60px;
-        flex-direction: column;
-        justify-content: center;
         padding-left: 0;
+        justify-content: center;
         text-align: center;
-        /* 改為 cover 讓圖片填滿，或是用置中對齊 */
         background: #465a83 url('first.png') no-repeat center center / cover;
     }
 
     .hero-text h1 {
-        font-size: 1.8rem; /* 縮小手機版標題字體 */
-        margin: 0 20px;
+        font-size: 1.8rem;
+        background: rgba(0, 0, 0, 0.3); /* 增加文字辨識度 */
+        padding: 10px 20px;
+        border-radius: 8px;
+        margin: 0 15px;
+    }
+
+    /* Footer 手機版垂直排列 */
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .footer-left {
+        text-align: center;
+    }
+
+    .footer-right {
+        justify-content: center;
     }
 }

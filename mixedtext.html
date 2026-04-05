@@ -17,6 +17,9 @@
                 <img src="logo.png" alt="Logo" style="height: 65px;">
             </a>
         </div>
+        <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
         <ul class="nav-links">
             <li class="dropdown">
                 <a href="javascript:void(0);">成員</a>
@@ -99,7 +102,7 @@
         <section class="abstract-section">
             <div class="text-container">
                 <h1>摘要<br></h1>
-                <p>生成式AI已能產出語句流暢、邏輯清晰的文本，使內容生成的成本大幅降低。目前多數AI文本檢測系統仍以二元分類為主，僅區分純人類撰寫與純機器生成文本。然而，實際應用情境，人機協作已普遍，混合文本逐漸成為常態。這類文本同時包含人類與 AI 語言特徵，使其在結構與語氣上更為複雜，也提高辨識難度，導致傳統檢測方法準確率下降。</p>
+                <p>還在糾結這篇文章是「真人溫度」還是「冷冰冰算法」嗎？看我們如何破解這場人機混和的數位迷局！當生成式 AI 練就流利的「人話」，傳統非黑即白的二元檢測早就跟不上時代。現在是人機協作的「混合文本」時代！我們深入文本，挑戰那些人類與 AI 交織的複雜邏輯，讓偽裝無所遁形。讓我們一同撕掉 AI 的假面，定義內容真實性的新維度！</p>
             </div>
         </section>
 
@@ -141,7 +144,7 @@
                 <h2 class="footer-title">2026 精誠中學第三屆雙語教育實驗班專題成果發表會</h2>
                 <p>總召：柯曉柔、陳旭昇<br>
                     公關：傅家昀<br>
-                    網頁管理：許宸愷、吳汯祐<br>
+                    網頁管理：王子丰、許宸愷、吳汯祐<br>
                     地址：彰化縣彰化市林森路200號</p>
                 <p class="copyright">Copyright © 2026 CCHS. All rights reserved.</p>
             </div>
@@ -151,6 +154,15 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+</script>
 
 </body>
 </html>
