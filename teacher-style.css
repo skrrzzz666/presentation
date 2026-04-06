@@ -8,6 +8,22 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Noto Serif TC', serif !important;
+    list-style: none !important; /* 強制確保所有清單符號消失 */
+}
+
+.nav-links li::before, 
+.nav-links a::before,
+.nav-links li::after,
+.nav-links a::after,
+.dropdown::before,
+.dropdown::after,
+.dropdown > a::before,
+.dropdown > a::after,
+.nav-links li::marker,
+.dropdown-menu li::marker {
+    content: none !important;
+    display: none !important;
+    font-size: 0 !important;
 }
 
 html, body {
@@ -28,10 +44,142 @@ body {
     padding-top: 70px;
 }
 
-.nav-links a {
-    font-weight: 400 !important; /* 確保成員介紹頁面的標籤也是細體 */
-    letter-spacing: 1px; /* 可選：增加一點字距感會顯得更輕盈 */
+/* 針對「成員」等下拉項目的縮排修正 */
+.nav-links .dropdown > a {
+    list-style: none !important;
+    text-indent: 0 !important; 
 }
+
+/* --- 導覽列 Navbar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 9999;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 0 50px;
+}
+
+.navbar a {
+    font-family: 'Noto Serif TC', serif !important;
+    font-weight: 400 !important; /* 強制標準細體 */
+    text-decoration: none;
+    color: #333;
+}
+
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo img {
+    display: block;
+    height: 65px; /* 根據你的 HTML 設定維持 65px */
+    transition: height 0.3s ease;
+}
+
+/* 漢堡選單按鈕 (預設電腦版隱藏) */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+}
+
+.nav-links {
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    position:relative;
+    list-style: none !important;
+    list-style-type: none !important;
+    list-style-image: none !important;
+    padding-left: 0 !important; 
+    margin-left: 0 !important;
+}
+
+.nav-links li::marker {
+    content: none !important;
+}
+
+.nav-links a {
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 0;
+    transition: 0.3s;
+    line-height: 1;
+    list-style-type: none !important;
+    font-weight: 400 !important;
+}
+
+.nav-links a:hover { color: #007bff; }
+
+/* --- 下拉選單邏輯修正 --- */
+
+/* 1. 確保父層選項是定位基準 */
+.nav-links .dropdown {
+    position: relative; 
+}
+
+/* 2. 下拉選單預設狀態：隱藏且絕對定位 */
+.dropdown-menu {
+    display: none;           /* 核心修正：預設隱藏 */
+    position: absolute;      /* 絕對定位，不影響導覽列高度 */
+    top: 100%;               /* 緊貼導覽列下方 */
+    left: 50%;               /* 水平置中參考點 */
+    transform: translateX(-50%); /* 完美的水平置中 */
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 加入陰影增加層次感 */
+    min-width: 160px;        /* 維持足夠寬度，不讓文字擠壓 */
+    padding: 10px 0;         /* 保持 style.css 的間距感 */
+    z-index: 1000;           /* 確保在所有元素最前方 */
+}
+
+/* 3. 當滑鼠移入（Hover）父標籤時才顯示 */
+.dropdown:hover > .dropdown-menu {
+    display: block !important; /* 強制顯示選單 */
+}
+
+/* 4. 內層連結樣式（維持你喜歡的 style.css 風格） */
+.dropdown-menu li a {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;      /* 增加左右內距防止文字貼邊 */
+    text-align: center;      /* 文字置中 */
+    font-weight: normal !important;
+    white-space: nowrap;     /* 防止長標題換行導致高度崩掉 */
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* 5. 滑過選項時的背景顏色 */
+.dropdown-menu li a:hover {
+    background-color: #f0f7ff; /* 淡藍色背景 */
+    color: #007bff;            /* 藍色文字 */
+}
+
 
 /* --- 2. 頂部 Hero 區塊 (電腦版) --- */
 .page-header {
@@ -222,6 +370,17 @@ body {
         padding: 20px 0;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         z-index: 1000;
+    }
+
+    .nav-links .dropdown-menu {
+        display: none;
+        width: 100%;
+    }
+
+    /* 只有在點擊或滑過父項目時才顯示 (手機版建議用點擊，但此處先修正 hover) */
+    .nav-links .dropdown:hover .dropdown-menu {
+        display: block;
+        background-color: #f9f9f9;
     }
 
     .nav-links.show {

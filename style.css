@@ -142,36 +142,45 @@ h1, h2, h3, .hero-text h1 {
 
 /* --- 下拉選單 (同步 style-article.css) --- */
 .dropdown-menu {
-    display: none; 
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ffffff;
-    width: max-content;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-radius: 4px;
-    list-style: none;
-    padding: 10px 0;
-    z-index: 10000;
+    display: block;          /* 核心修改：讓超連結撐開，填滿整個寬度 */
+    padding: 12px 0;         /* 控制上下間距，0 表示左右不留白以確保全寬可點擊 */
+    text-align: center;      /* 文字置中 */
+    width: 100%;             /* 確保寬度 100% */
+    font-weight: normal !important;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #333;             /* 設定文字顏色 */
+    transition: 0.3s;
 }
 
 .dropdown:hover .dropdown-menu { 
     display: block; 
 }
 
+.dropdown-menu li {
+    padding: 0 !important; 
+    margin: 0 !important;
+    list-style: none !important;
+}
+
 .dropdown-menu li a {
-    padding: 10px 20px;
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
     font-weight: normal !important;
     white-space: nowrap;
     font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 .dropdown-menu li a:hover { 
     background-color: #f0f7ff; 
     color: #007bff; 
 }
+
 
 /* --- 首頁背景圖 (Hero Section) --- */
 .hero-section {
