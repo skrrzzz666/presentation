@@ -102,11 +102,10 @@ html {
     display: inline-block;
     text-decoration: none;
     color: #333;
-    font-weight: bold;
     font-size: 16px;
-    display: block;
     padding: 10px 0;
     list-style-type: none !important;
+    font-weight: 400 !important;
 }
 
 /* --- 全域設定：預設內文使用思源黑體 --- */
@@ -120,11 +119,15 @@ body {
     background-color: #f4f4f9;
 }
 
-/* --- 標題設定：強烈視覺感的思源宋體 Bold --- */
-h1, h2, h3, .hero-text h1, .navbar a {
-    /* 標題改用思源宋體，增加人文質感與學術專業感 */
+/* 修改後：將 .navbar a 移出粗體設定 */
+h1, h2, h3, .hero-text h1 {
     font-family: 'Noto Serif TC', serif !important;
-    font-weight: 900; /* Bold 粗體 */
+    font-weight: 900; 
+}
+
+.navbar a {
+    font-family: 'Noto Serif TC', serif !important;
+    font-weight: 400 !important; /* 強制改回標準細體 */
 }
 
 /* 如果你特別想要 Hero Section 的文字更粗一點 */

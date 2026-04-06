@@ -28,6 +28,11 @@ body {
     padding-top: 70px;
 }
 
+.nav-links a {
+    font-weight: 400 !important; /* 確保成員介紹頁面的標籤也是細體 */
+    letter-spacing: 1px; /* 可選：增加一點字距感會顯得更輕盈 */
+}
+
 /* --- 2. 頂部 Hero 區塊 (電腦版) --- */
 .page-header {
     position: relative;

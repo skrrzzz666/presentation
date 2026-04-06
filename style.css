@@ -1,16 +1,39 @@
-/* --- 基礎設定 --- */
+/* --- 基礎與導覽列設定 (同步 style-article.css 邏輯) --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Noto Serif TC', serif !important;
+    list-style: none !important; /* 強制確保所有清單符號消失 */
+}
+
+/* 強制移除所有可能的偽元素內容與清單標記，防止導覽列出現方框 */
+.nav-links li::before, 
+.nav-links a::before,
+.nav-links li::after,
+.nav-links a::after,
+.dropdown::before,
+.dropdown::after,
+.dropdown > a::before,
+.dropdown > a::after,
+.nav-links li::marker,
+.dropdown-menu li::marker {
+    content: none !important;
+    display: none !important;
+    font-size: 0 !important;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* 確保圖示標籤使用自己的字體，不被 Noto Serif 強制覆蓋 */
+/* 針對「成員」等下拉項目的縮排修正 */
+.nav-links .dropdown > a {
+    list-style: none !important;
+    text-indent: 0 !important; 
+}
+
+/* 確保圖示標籤不被 Noto Serif 強制覆蓋 */
 .fas, .fab, .far, .fa-solid, .fa-brands {
     font-family: "Font Awesome 6 Free" !important; 
     font-weight: 900;
@@ -27,10 +50,11 @@ body {
 }
 
 /* --- 標題與文字設定 --- */
-h1, h2, h3, .hero-text h1, .navbar a {
+h1, h2, h3, .hero-text h1 {
     font-family: 'Noto Serif TC', serif !important;
     font-weight: 900;
 }
+
 
 /* --- 導覽列 Navbar --- */
 .navbar {
@@ -46,6 +70,13 @@ h1, h2, h3, .hero-text h1, .navbar a {
     justify-content: center; 
     align-items: center;
     padding: 0 50px;
+}
+
+.navbar a {
+    font-family: 'Noto Serif TC', serif !important;
+    font-weight: 400 !important; /* 強制標準細體 */
+    text-decoration: none;
+    color: #333;
 }
 
 .logo {
@@ -71,28 +102,47 @@ h1, h2, h3, .hero-text h1, .navbar a {
 }
 
 .nav-links {
-    list-style: none;
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
     display: flex;
     gap: 30px;
+    align-items: center;
 }
 
-.nav-links li { position: relative; }
+.nav-links li {
+    display: flex;
+    align-items: center;
+    position:relative;
+    list-style: none !important;
+    list-style-type: none !important;
+    list-style-image: none !important;
+    padding-left: 0 !important; 
+    margin-left: 0 !important;
+}
+
+.nav-links li::marker {
+    content: none !important;
+}
 
 .nav-links a {
+    font-size: 16px;
+    display: inline-block;
     text-decoration: none;
     color: #333;
-    font-weight: bold;
-    font-size: 16px;
-    display: block;
     padding: 10px 0;
-    transition: color 0.3s;
+    transition: 0.3s;
+    line-height: 1;
+    list-style-type: none !important;
+    font-weight: 400 !important;
 }
 
 .nav-links a:hover { color: #007bff; }
 
-/* --- 下拉選單 (電腦版) --- */
+/* --- 下拉選單 (同步 style-article.css) --- */
 .dropdown-menu {
-    display: none;
+    display: none; 
     position: absolute;
     top: 100%;
     left: 50%;
@@ -104,17 +154,24 @@ h1, h2, h3, .hero-text h1, .navbar a {
     border-radius: 4px;
     list-style: none;
     padding: 10px 0;
+    z-index: 10000;
 }
 
-.dropdown:hover .dropdown-menu { display: block; }
+.dropdown:hover .dropdown-menu { 
+    display: block; 
+}
 
 .dropdown-menu li a {
     padding: 10px 20px;
-    font-weight: normal;
+    font-weight: normal !important;
     white-space: nowrap;
+    font-size: 14px;
 }
 
-.dropdown-menu li a:hover { background-color: #f0f7ff; color: #007bff; }
+.dropdown-menu li a:hover { 
+    background-color: #f0f7ff; 
+    color: #007bff; 
+}
 
 /* --- 首頁背景圖 (Hero Section) --- */
 .hero-section {
