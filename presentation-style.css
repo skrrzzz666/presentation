@@ -20,7 +20,7 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 輕微陰影 */
     background: #fff;
     transition: transform 0.3s ease;
-    aspect-ratio: 4 / 3; /* 統一照片比例，看起來更整齊 */
+    aspect-ratio: 16 / 9; /* 統一照片比例，看起來更整齊 */
 }
 
 .gallery-item img {
