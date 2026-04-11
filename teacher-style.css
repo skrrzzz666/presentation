@@ -220,20 +220,20 @@ body {
     text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* --- 3. 內容容器 --- */
+/* --- 3. 內容容器 修改 --- */
 .member-container {
-    max-width: 1100px;
+    max-width: 1400px; /* 從 1100px 增加到 1400px，縮小兩側留白 */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;   /* 增加一點內部緩衝 */
 }
 
 /* --- 4. 成員內容排版 (電腦版) --- */
 .member-section {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 120px;
-    gap: 60px;
+    gap: 60px; /* 稍微縮小間距，給文字更多空間 */
 }
 
 .member-section:nth-child(even) {
@@ -241,8 +241,9 @@ body {
 }
 
 .member-text-wrapper {
-    flex: 1;
+    flex: 1.5;          /* 將文字比例從 1 改為 2，佔據更多空間 */
     text-align: left;
+    padding-right: 20px; /* 增加一點右邊距，避免文字貼近圖片 */
 }
 
 .group-title {
@@ -256,23 +257,25 @@ body {
     padding-bottom: 5px;
 }
 
+/* 針對文字內容的字體大小微調，讓閱讀更舒適 */
 .group-list h3 {
-    font-size: 1.3rem;
+    font-size: 1.15rem; /* 稍微縮小字體，適合放長文 */
     line-height: 1.8;
     color: #444;
     font-weight: 400;
     margin-top: 15px;
+    text-align: justify; /* 讓文字左右對齊，看起來更整齊 */
 }
 
 .member-image-wrapper {
-    flex: 1.2;
+    flex: 1;        /* 將圖片比例從 1.2 大幅縮小為 0.7 */
     display: flex;
     justify-content: center;
 }
 
 .member-photo {
     width: 100%;
-    max-width: 450px;
+    max-width: 480px; /* 限制圖片最大寬度，避免在寬螢幕上顯得太大 */
     height: auto;
     border-radius: 20px;
     box-shadow: 0 15px 45px rgba(0,0,0,0.1);
