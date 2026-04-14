@@ -355,3 +355,100 @@ h1, h2, h3, .hero-text h1 {
     }
 }
 
+/* --- 場次時程表 (交錯佈局) --- */
+.timeline-section {
+    padding: 80px 10%;
+    background-color: #ffffff; /* 讓背景為白色，跟 Hero Section 做區隔 */
+}
+
+.timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.session-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+    gap: 40px;
+
+    /* 新增外框線設定 */
+    border: 1px solid #ddd; /* 淺灰色外框 */
+    padding: 30px;          /* 框框內的內距 */
+    border-radius: 15px;    /* 框框圓角 */
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+/* 懸浮效果：滑鼠移上去時框框稍微變深 */
+.session-row:hover {
+    border-color: #465a83;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* 偶數行 (2nd) 方向反轉 */
+.session-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.session-title {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* 標題框框：模仿手繪草圖的方框感 */
+.title-box {
+    border: 3px solid #465a83; /* 使用你原本的深藍色 */
+    padding: 20px 40px;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #465a83;
+    border-radius: 12px;
+    min-width: 150px;
+    text-align: center;
+    background: white;
+    box-shadow: 5px 5px 0px rgba(70, 90, 131, 0.1); /* 增加一點點立體感 */
+}
+
+.session-content {
+    flex: 1;
+}
+
+.session-content h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* 移除場次內容中連結的預設樣式 */
+.session-content h3 a {
+    text-decoration: none !important; /* 移除底線 */
+    color: #333 !important;           /* 強制改為黑色（或與你標題一致的顏色） */
+    display: inline-block;            /* 確保點擊範圍正確 */
+    transition: 0.3s;
+}
+
+/* 滑鼠移上去時的視覺回饋 (可選) */
+.session-content h3 a:hover {
+    color: #465a83 !important;        /* 移上去時變成你專案的深藍色，增加互動感 */
+}
+
+/* 手機版適應 (RWD) */
+@media (max-width: 768px) {
+    .session-row, .session-row:nth-child(even) {
+        flex-direction: column; /* 全部改為垂直排列 */
+        gap: 20px;
+        margin-bottom: 60px;
+    }
+
+    .session-content, .session-row:nth-child(even) .session-content {
+        text-align: center; !important; /* 手機版文字全部置中 */
+        padding: 0 20px;
+    }
+    
+    .title-box {
+        font-size: 1.5rem;
+        padding: 10px 30px;
+    }
+}
