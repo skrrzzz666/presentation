@@ -415,14 +415,14 @@ h1, h2, h3, .hero-text h1 {
     flex: 1;
 }
 
-.session-content h3 {
+.session-content h4 {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 10px;
 }
 
 /* 移除場次內容中連結的預設樣式 */
-.session-content h3 a {
+.session-content h4 a {
     text-decoration: none !important; /* 移除底線 */
     color: #333 !important;           /* 強制改為黑色（或與你標題一致的顏色） */
     display: inline-block;            /* 確保點擊範圍正確 */
@@ -430,8 +430,8 @@ h1, h2, h3, .hero-text h1 {
 }
 
 /* 滑鼠移上去時的視覺回饋 (可選) */
-.session-content h3 a:hover {
-    color: #465a83 !important;        /* 移上去時變成你專案的深藍色，增加互動感 */
+.session-content h4 a:hover {
+    color: #007bff !important;        /* 移上去時變成你專案的深藍色，增加互動感 */
 }
 
 /* 手機版適應 (RWD) */
