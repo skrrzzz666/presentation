@@ -259,6 +259,24 @@ body {
 
 /* 針對文字內容的字體大小微調，讓閱讀更舒適 */
 .group-list h3 {
+    font-size: 1.5rem; /* 稍微縮小字體，適合放長文 */
+    line-height: 1.8;
+    color: #444;
+    font-weight: 400;
+    margin-top: 15px;
+    text-align: justify; /* 讓文字左右對齊，看起來更整齊 */
+}
+
+.group-list h2 {
+    font-size: 1.5rem; /* 稍微縮小字體，適合放長文 */
+    line-height: 1.8;
+    color: #444;
+    font-weight: 300;
+    margin-top: 15px;
+    text-align: justify; /* 讓文字左右對齊，看起來更整齊 */
+}
+
+.group-list p {
     font-size: 1.15rem; /* 稍微縮小字體，適合放長文 */
     line-height: 1.8;
     color: #444;
