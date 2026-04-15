@@ -300,3 +300,40 @@ body {
         width: 100%;
     }
 }
+
+/* 新增組員清單容器佈局 */
+.member-names {
+    display: flex;
+    margin-top: 5px; /* 縮小與上方職稱的間距 */
+    align-items: flex-start;
+}
+
+.role-label {
+    font-size: 1.3rem;
+    color: #444;
+    white-space: nowrap; /* 確保「組員：」不會被斷行 */
+    line-height: 1.4;
+}
+
+.names-wrap {
+    display: flex;
+    flex-wrap: wrap;     /* 關鍵：手機版空間不足自動換行 */
+    line-height: 1.4;    /* 縮小行高，解決你提到的行距問題 */
+}
+
+.names-wrap span {
+    font-size: 1.3rem;
+    color: #444;
+}
+
+.names-container {
+    display: flex;
+    flex-wrap: wrap; /* 核心：空間不足自動換行 */
+    gap: 12px 20px; /* 控制名字之間的上下及左右間距 */
+}
+
+.names-container span {
+    font-size: 1.3rem;
+    color: #444;
+    line-height: 1.8;
+}
