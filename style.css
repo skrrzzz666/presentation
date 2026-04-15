@@ -443,7 +443,7 @@ h1, h2, h3, .hero-text h1 {
     }
 
     .session-content, .session-row:nth-child(even) .session-content {
-        text-align: center; !important; /* 手機版文字全部置中 */
+        text-align: center;  /* 手機版文字全部置中 */
         padding: 0 20px;
     }
     
