@@ -285,6 +285,19 @@ body {
     text-align: justify; /* 讓文字左右對齊，看起來更整齊 */
 }
 
+/* 簽名區塊靠右對齊 */
+.signature-wrapper  p{
+    text-align: right;
+    margin-top: 20px;     /* 與上方內文保持間距 */
+    line-height: 1.8;     /* 維持與內文一致的行高 */
+    font-weight: bold;    /* 如果想讓簽名更醒目可以加這行 */
+    font-size: 1.15rem; /* 稍微縮小字體，適合放長文 */
+    color: #444;
+    font-weight: 400;
+}
+
+/* 針對校長區段也可以比照辦理 */
+
 .member-image-wrapper {
     flex: 1;        /* 將圖片比例從 1.2 大幅縮小為 0.7 */
     display: flex;
