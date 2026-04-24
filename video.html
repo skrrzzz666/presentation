@@ -100,8 +100,11 @@
             <section class="video-section">
                 <h2 class="session-title">前導片</h2>
                 <div class="divider"></div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/影片ID0" frameborder="0" allowfullscreen></iframe>
+                <div class="video-wrapper direct-video">
+                    <video controls poster="first.png" width="100%">
+                        <source src="videos/qiandaopian.mp4" type="video/mp4">
+                        您的瀏覽器不支援 HTML5 影片播放。
+                    </video>
                 </div>
             </section>
 
@@ -156,6 +159,15 @@
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('show');
         });
+    </script>
+    <script async src="https://www.instagram.com/embed.js"></script>
+    <script>
+        // 確保頁面載入後，如果影片沒出來，手動觸發 IG 重新處理
+        window.onload = function() {
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+            }
+        };
     </script>
 
 

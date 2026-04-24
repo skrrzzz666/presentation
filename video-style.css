@@ -54,6 +54,28 @@
     height: 100%;
 }
 
+
+/* video-style.css */
+
+.video-wrapper.direct-video {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 800px;      /* 橫式影片可以設定較寬的上限 */
+    height: auto !important; 
+    padding-bottom: 0 !important; /* 移除 16:9 的強制限制 */
+    margin: 0 auto !important;
+    background: #000;      /* 影片載入前的背景色 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.video-wrapper.direct-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 /* 手機版微調 */
 @media (max-width: 768px) {
     .session-title {
