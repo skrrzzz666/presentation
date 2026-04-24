@@ -379,6 +379,59 @@ body {
     transform: translateY(-3px);
 }
 
+
+/* --- 其他教師網格佈局 --- */
+.other-teachers-section {
+    margin-top: 50px;  /* 增加區塊內部的下方空間 */
+    margin-bottom: 100px; /* 增加與下一個元件（Footer）的距離 */
+    text-align: center;
+}
+
+.teachers-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 讓卡片從中間排列 */
+    gap: 40px; /* 卡片之間的間距 */
+    margin-top: 50px;
+}
+
+.teacher-card {
+    width: 400px; /* 固定寬度，讓排列整齊 */
+    transition: transform 0.3s ease;
+}
+
+.teacher-img-container {
+    width: 100%;
+    aspect-ratio: 12/8; /* 設定照片比例，確保即使原圖尺寸不同也會整齊 */
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+.teacher-grid-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 關鍵：裁切圖片以填滿容器，不變形 */
+}
+
+.teacher-grid-name {
+    font-size: 1.3rem;
+    color: #444;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* 滑鼠懸停效果 */
+.teacher-card:hover {
+    transform: translateY(-8px);
+}
+
+.teacher-card:hover .teacher-img-container {
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+
 /* =========================================
    僅針對手機版 (RWD) 的專屬修正
    ========================================= */
@@ -496,5 +549,17 @@ body {
     .footer-right {
         justify-content: center !important;
         width: 100%;
+    }
+
+    .teachers-grid {
+        gap: 20px; /* 手機版間距小一點 */
+    }
+
+    .teacher-card {
+        width: 45%; /* 手機版一排顯示兩個 */
+    }
+
+    .teacher-grid-name {
+        font-size: 1.1rem;
     }
 }
